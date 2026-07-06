@@ -1,44 +1,522 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>초등 나이스 실무 도움 도우미</title>
-    <!-- Tailwind CSS (스타일링) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- React 및 Babel (브라우저에서 React 실행용) -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Lucide Icons (아이콘 라이브러리) -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>해솔초 생기부 2026 🌊</title>
+  
+  <!-- 1. 페이퍼로지(Paperlogy) 폰트 불러오기 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2406-1@1.0/Paperlogy-Medium.woff2">
+  
+  <!-- 2. 테일윈드 CSS 및 Lucide 아이콘 (파스텔톤 스타일링용) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- 3. 폭죽 애니메이션(Canvas Confetti) 라이브러리 -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    body {
+      font-family: 'Paperlogy-Medium', sans-serif;
+    }
+    /* 스크롤바도 시원하고 둥글게 파스텔 처리 */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f0f9ff;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #bae6fd;
+      border-radius: 9999px;
+    }
+  </style>
 </head>
-<body class="bg-gray-50">
-    <div id="root"></div>
+<body class="min-h-screen bg-sky-50/50 text-slate-700 antialiased selection:bg-sky-200">
 
-    <script type="text/transform-babel" type="text/babel">
-        // 1. 기존 코드에서 상단 import 문(import React ... from 'lucide-react')은 모두 삭제합니다.
-        
-        // 2. 사용할 아이콘들을 아래와 같이 Lucide 객체에서 가져옵니다.
-        const { Calendar, CheckCircle, AlertTriangle, Clock, UserCheck, FileText, Check, RefreshCw, Info, ChevronRight, ChevronDown, ArrowRight, Sparkles, Award, Search, ExternalLink, X } = Lucide;
+  <!-- 글로벌 상단 헤더 -->
+  <header class="sticky top-0 z-40 bg-white/80 border-b border-sky-100 shadow-sm backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3">
+        <div class="p-2.5 bg-sky-400 rounded-2xl text-white shadow-md shadow-sky-100">
+          <i data-lucide="sparkles" class="w-5 h-5 animate-pulse"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold text-sky-900 leading-tight">해솔초 생기부 2026 🌊</h1>
+          <p class="text-xs text-sky-500 font-semibold tracking-wide">2026학년도 학교생활기록부 작성 도우미</p>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2 text-xs text-sky-600 bg-sky-50 border border-sky-100 px-3 py-1.5 rounded-full font-medium">
+        <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+        <span>1학기말 마감 전용</span>
+      </div>
+    </div>
+  </header>
 
-        // 3. SCHEDULE_TIMELINE, INITIAL_STEPS 데이터 정의를 여기에 넣으세요.
-        const SCHEDULE_TIMELINE = [ ... ];
-        const INITIAL_STEPS = [ ... ];
+  <!-- 메인 레이아웃 구역 -->
+  <main class="max-w-6xl mx-auto px-4 py-6 space-y-6">
 
-        // 4. 메인 컴포넌트 작성
-        function App() {
-            // 작성하신 컴포넌트 로직 (useState, useEffect 등)을 그대로 넣으세요.
-            return (
-                <div>
-                   {/* 기존 return 안의 JSX 내용 */}
+    <!-- 경기도교육청 공식 보안 가이드 배너 -->
+    <div class="bg-gradient-to-r from-sky-400 to-emerald-400 text-white p-5 rounded-2xl shadow-sm border border-sky-200/50 relative overflow-hidden">
+      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <span class="bg-white/20 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider">중요 보안 가이드</span>
+          <p class="text-xs md:text-sm font-medium leading-relaxed">
+            협업 전반에 공식 보안 가이드를 취득한 경기도교육청 전용 오피스 도메인 계정(@goedu.kr)을 활용하여 안전한 보안 환경 하에서 도움을 받으시기를 강력 권장합니다.
+          </p>
+        </div>
+        <div class="flex gap-2 flex-shrink-0">
+          <a href="https://ahnssam.netlify.netlify.app/" target="_blank" class="bg-white/20 hover:bg-white/30 text-white text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center space-x-1">
+            <i data-lucide="external-link" class="w-3.5 h-3.5"></i> <span>안쌤 평어 제작소</span>
+          </a>
+          <a href="https://nara-speller.co.kr/speller/" target="_blank" class="bg-white text-sky-600 hover:bg-sky-50 text-xs font-bold px-4 py-2 rounded-xl transition-all flex items-center space-x-1 shadow-sm">
+            <i data-lucide="check-check" class="w-3.5 h-3.5"></i> <span>부산대 맞춤법 검사</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 대시보드 그리드 구조 -->
+    <div class="grid lg:grid-cols-12 gap-6">
+
+      <!-- 왼쪽 구역: 1번 기능 (날짜별 확정 일정표) -->
+      <section class="lg:col-span-5 space-y-4">
+        <div class="bg-white p-5 rounded-2xl border border-sky-100 shadow-sm">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-1.5">
+              <i data-lucide="calendar" class="w-4 h-4 text-sky-500"></i>
+              <span>1. 마감일 일정표 (클릭 시 하단 필터)</span>
+            </h3>
+            <button onclick="clearFilter()" id="btn-all-view" class="hidden text-[11px] bg-sky-50 text-sky-600 border border-sky-100 px-2 py-0.5 rounded-lg hover:bg-sky-100">
+              전체 보기
+            </button>
+          </div>
+          <p class="text-[11px] text-slate-400 mb-4 leading-relaxed">아래 단일 마감일을 클릭하시면, 그 날짜에 완료해야 하는 세부 체크리스트 단계만 스마트하게 필터링됩니다.</p>
+          
+          <!-- 단일 마감일 리스트 카드형 -->
+          <div class="space-y-2.5">
+            <div onclick="filterDate('07.14')" id="date-card-0714" class="date-card p-3.5 rounded-xl border border-sky-100 bg-white hover:border-sky-300 transition-all cursor-pointer flex justify-between items-center shadow-sm">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded">07.14 (화)</span>
+                <h4 class="text-xs font-bold text-slate-800 mt-1">교과평가 & 출결 상황 일람표 확인 및 출력</h4>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+            </div>
+
+            <div onclick="filterDate('07.15')" id="date-card-0715" class="date-card p-3.5 rounded-xl border border-sky-100 bg-white hover:border-sky-300 transition-all cursor-pointer flex justify-between items-center shadow-sm">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">07.15 (수)</span>
+                <h4 class="text-xs font-bold text-slate-800 mt-1">학기말 종합의견 동학년 검토 상호 확인</h4>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+            </div>
+
+            <div onclick="filterDate('07.20')" id="date-card-0720" class="date-card p-3.5 rounded-xl border border-sky-100 bg-white hover:border-sky-300 transition-all cursor-pointer flex justify-between items-center shadow-sm">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">07.20 (월) 15시 마감</span>
+                <h4 class="text-xs font-bold text-slate-800 mt-1">창체(자율/동아리) 검토 교차 확인 및 제출</h4>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+            </div>
+
+            <div onclick="filterDate('07.23')" id="date-card-0723" class="date-card p-3.5 rounded-xl border border-sky-100 bg-white hover:border-sky-300 transition-all cursor-pointer flex justify-between items-center shadow-sm">
+              <div class="space-y-1">
+                <span class="text-xs font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded">07.23 (목) 15시 마감</span>
+                <h4 class="text-xs font-bold text-slate-800 mt-1">생활통지표 제출 및 생기부 점검표(3-2) 마감</h4>
+              </div>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-slate-300"></i>
+            </div>
+          </div>
+
+          <!-- 진척도 가시화 바 -->
+          <div class="mt-5 pt-4 border-t border-sky-50 space-y-2">
+            <div class="flex justify-between text-xs font-bold text-slate-600">
+              <span>나이스 최종 마감 진척도</span>
+              <span id="progress-percent" class="text-sky-500">0%</span>
+            </div>
+            <div class="w-full bg-sky-100/50 rounded-full h-2.5 overflow-hidden">
+              <div id="progress-bar" class="bg-gradient-to-r from-sky-400 to-sky-500 h-2.5 rounded-full transition-all duration-500" style="width: 0%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-slate-400 font-medium">
+              <span id="progress-count">완료 0개 / 총 11개</span>
+              <button onclick="openResetModal()" class="text-red-400 hover:text-red-500 flex items-center space-x-0.5">
+                <i data-lucide="refresh-cw" class="w-2.5 h-2.5"></i> <span>기록 초기화</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 오른쪽 구역: 2번 기능 (순서대로 진행하는 순차적 8단계 체크리스트) -->
+      <section class="lg:col-span-7 space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="font-bold text-slate-800 text-sm flex items-center space-x-1.5 px-1">
+            <i data-lucide="check-square" class="w-4 h-4 text-emerald-500"></i>
+            <span>2. 실무 순서별 기재요령 가이드라인 & 체크리스트</span>
+          </h3>
+          <span id="filter-badge" class="hidden text-[10px] font-bold bg-amber-50 text-amber-600 border border-amber-200 px-2 py-0.5 rounded-full">필터링 적용 중</span>
+        </div>
+
+        <!-- 실무 단계별 아코디언 카드 그룹 -->
+        <div class="space-y-3" id="steps-container">
+          
+          <!-- STEP 1 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.14" id="step-card-1">
+            <div class="p-4 bg-sky-50/50 border-b border-sky-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-sky-400 text-white text-[10px] font-bold flex items-center justify-center">1</span>
+                <span class="text-xs font-bold text-slate-800">교육과정 시수 편차 검정</span>
+              </div>
+              <span class="text-[10px] font-bold text-sky-600 bg-white border border-sky-200 px-2 py-0.5 rounded-full">마감일: 07.14 (화)</span>
+            </div>
+            <div class="p-4 space-y-2.5">
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-1" onchange="updateCheck('chk-1')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[시수편차 0 확인]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">[학급담임]-[교육과정]-[시간표관리] 메뉴에서 1학기 시수편차가 '0'이 되는지 확인 및 감사 지적 예방 체크[cite: 1].</p>
                 </div>
-            );
-        }
+              </label>
+            </div>
+          </div>
 
-        // 5. React 18 방식으로 렌더링
-        const root = ReactDom.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+          <!-- STEP 2 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.14" id="step-card-2">
+            <div class="p-4 bg-sky-50/50 border-b border-sky-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-sky-400 text-white text-[10px] font-bold flex items-center justify-center">2</span>
+                <span class="text-xs font-bold text-slate-800">기본 학적 및 학생 인적사항</span>
+              </div>
+              <span class="text-[10px] font-bold text-sky-600 bg-white border border-sky-200 px-2 py-0.5 rounded-full">마감일: 07.14 (화)</span>
+            </div>
+            <div class="p-4 space-y-3">
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-2" onchange="updateCheck('chk-2')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[사진 및 도로명 주소 현행화]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">사진 출력 회전현상을 최종 점검하고 주소연계 회신 결과를 반영해 주소 현행화 마감 (비밀전학 주소 누가 불가능).</p>
+                </div>
+              </label>
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-3" onchange="updateCheck('chk-3')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[학년별 입학일 구분 검증]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">2026학년도 입학 기준 확인: 1~3학년은 3월 1일 입학 처리, 4~6학년은 3월 2일 입학 이력 처리 준수.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 3 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.14" id="step-card-3">
+            <div class="p-4 bg-sky-50/50 border-b border-sky-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-sky-400 text-white text-[10px] font-bold flex items-center justify-center">3</span>
+                <span class="text-xs font-bold text-slate-800">출결 상황 마감</span>
+              </div>
+              <span class="text-[10px] font-bold text-sky-600 bg-white border border-sky-200 px-2 py-0.5 rounded-full">마감일: 07.14 (화)</span>
+            </div>
+            <div class="p-4 space-y-3">
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-4" onchange="updateCheck('chk-4')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[기타결석 및 장기결석 사유 규정 변경]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">기타결석은 1일이라도 반드시 사유를 기입해야 하며, 2026년부터 장기결석 명칭은 삭제되었으므로 사유란 연동 시 절대 오기하지 않도록 주의.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 4 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.20" id="step-card-4">
+            <div class="p-4 bg-indigo-50/50 border-b border-indigo-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-indigo-400 text-white text-[10px] font-bold flex items-center justify-center">4</span>
+                <span class="text-xs font-bold text-slate-800">창의적 체험활동 (자율/동아리/진로/봉사)</span>
+              </div>
+              <span class="text-[10px] font-bold text-indigo-600 bg-white border border-indigo-200 px-2 py-0.5 rounded-full">마감일: 07.20 (월)</span>
+            </div>
+            <div class="p-4 space-y-3">
+              <!-- 평어 인공지능 지원 배너 안내 내장 -->
+              <div class="p-3 bg-sky-50 rounded-xl border border-sky-100 text-[11px] text-sky-800 space-y-1">
+                <p class="font-bold flex items-center space-x-1">
+                  <i data-lucide="info" class="w-3.5 h-3.5 text-sky-500"></i>
+                  <span>AI 평어 작성안내 (안쌤의 평어 제작소 연계)</span>
+                </p>
+                <p class="text-slate-500 leading-relaxed">
+                  생기부 글자 생성 시 학생부 원본 PDF 파일을 외부 시스템에 그대로 업로드하기보다 <strong>학생 이름을 미리 마스킹(학생1~학생24 형태의 엑셀가공)하여 활용</strong>하시기 바랍니다.
+                </p>
+              </div>
+
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-5" onchange="updateCheck('chk-5')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[자치활동 임원 재임기간]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">1학기 학급 임원의 재임 기간인 <code class="font-mono bg-slate-100 px-1 text-slate-700">2026.03.01. ~ 2026.08.19.</code> 날짜가 누락 없이 병기되었는지 대조 완료.</p>
+                </div>
+              </label>
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-6" onchange="updateCheck('chk-6')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[스포츠클럽 이수시간 미기재]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">2026 규정 반영에 따라 이수 시간은 시스템상 입력하지 않으며 오로지 실질적 활동 내용이 투영된 (클럽명)만 연동 기록 처리.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 5 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.15" id="step-card-5">
+            <div class="p-4 bg-indigo-50/50 border-b border-indigo-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-indigo-400 text-white text-[10px] font-bold flex items-center justify-center">5</span>
+                <span class="text-xs font-bold text-slate-800">교과학습발달상황 & 학기말 종합의견</span>
+              </div>
+              <span class="text-[10px] font-bold text-indigo-600 bg-white border border-indigo-200 px-2 py-0.5 rounded-full">마감일: 07.15 (수)</span>
+            </div>
+            <div class="p-4 space-y-3">
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-7" onchange="updateCheck('chk-7')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[1·2학년 통합기록 및 전입생 공란 방지]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">바른/슬기로운/즐거운생활은 영역 종합 기록을 엄수하고, 평가가 없는 장기결석생/전입생은 사유를 명시하여 공란 없이 조치.</p>
+                </div>
+              </label>
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-8" onchange="updateCheck('chk-8')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[금지어 및 종결어미 마감]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">대회, 수상 등 금지 문구를 일체 제거하고 문장 끝은 오직 <code class="font-mono bg-slate-100 px-1 text-slate-700">~함. ~임.</code> 명사형 종결어미 구조로 마무리[cite: 1].</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 6 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.23" id="step-card-6">
+            <div class="p-4 bg-emerald-50/50 border-b border-emerald-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-emerald-400 text-white text-[10px] font-bold flex items-center justify-center">6</span>
+                <span class="text-xs font-bold text-slate-800">행동특성 및 종합의견</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-600 bg-white border border-emerald-200 px-2 py-0.5 rounded-full">마감일: 07.23 (목)</span>
+            </div>
+            <div class="p-4 space-y-3">
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-9" onchange="updateCheck('chk-9')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[총체적 변화 모습 및 부정적 특성 기재법]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">학생의 성장을 돕는 문장으로 누가기록을 참고해 구체화하되, 혹여 부정적 특성을 기술할 경우 반드시 변화 가능성 발전 조건을 함께 입력.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 7 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.23" id="step-card-7">
+            <div class="p-4 bg-emerald-50/50 border-b border-emerald-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-emerald-400 text-white text-[10px] font-bold flex items-center justify-center">7</span>
+                <span class="text-xs font-bold text-slate-800">나이스 자료검증 및 마감 연동</span>
+              </div>
+              <span class="text-[10px] font-bold text-emerald-600 bg-white border border-emerald-200 px-2 py-0.5 rounded-full">마감일: 07.23 (목)</span>
+            </div>
+            <div class="p-4 space-y-3">
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-10" onchange="updateCheck('chk-10')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[전체 항목 자료검증 오류 정정]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">[자료검증 및 반마감] 탭에서 전체검증 후 \'확인필요\' 인정 오류 예외처리 사유를 완비하고 학생부와 통지표 마감 버튼 연동 클릭.</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- STEP 8 -->
+          <div class="step-node bg-white rounded-2xl border border-sky-100 shadow-sm overflow-hidden transition-all" data-date="07.23" id="step-card-8">
+            <div class="p-4 bg-amber-50/50 border-b border-amber-100/50 flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <span class="w-5 h-5 rounded-lg bg-amber-400 text-white text-[10px] font-bold flex items-center justify-center">8</span>
+                <span class="text-xs font-bold text-slate-800">통지표 출력 및 최종 점검표 제출</span>
+              </div>
+              <span class="text-[10px] font-bold text-amber-600 bg-white border border-amber-200 px-2 py-0.5 rounded-full">마감일: 07.23 (목)</span>
+            </div>
+            <div class="p-4 space-y-3">
+              <label class="flex items-start space-x-3 cursor-pointer group">
+                <input type="checkbox" id="chk-11" onchange="updateCheck('chk-11')" class="todo-checkbox mt-1 rounded border-sky-200 text-sky-500 focus:ring-sky-400 w-4 h-4 flex-shrink-0">
+                <div class="text-xs font-medium group-hover:text-slate-900">
+                  <p class="text-slate-800 font-semibold">[생활통지표 상철본 및 점검표 인계]</p>
+                  <p class="text-slate-400 text-[11px] mt-0.5 leading-relaxed">통지표를 상철 인쇄하여 15시 전까지 교육지원실로 이송하고, 최종 자가점검표(3-2)에 교사 날인 후 동학년 취합 제출[cite: 1].</p>
+                </div>
+              </label>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 하단 푸터 및 카피라이트 -->
+  <footer class="bg-white border-t border-sky-100 mt-16 py-6 text-center text-xs text-slate-400 space-y-1.5">
+    <p class="font-medium text-slate-500">2026학년도 해솔초등학교 1학기말 교육과정 마감 지원 프로젝트</p>
+    <p class="text-[11px]">본 도우미는 안내용 자료이며, 최종 기재 권한과 마감은 교육청 공문을 최우선으로 준수해 주세요.</p>
+    <p class="text-sky-500 font-bold mt-2">© 2026 해솔초 심쌤</p>
+  </footer>
+
+  <!-- 커스텀 초기화 확인용 다이얼로그 모달 -->
+  <div id="reset-modal" class="fixed inset-0 z-50 bg-slate-900/40 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-5 space-y-4 shadow-xl border border-sky-100 animate-fadeIn">
+      <div class="flex items-center space-x-2 text-red-500 font-bold text-sm">
+        <i data-lucide="alert-triangle" class="w-5 h-5"></i>
+        <span>진행 내용 전체 초기화</span>
+      </div>
+      <p class="text-xs text-slate-500 leading-relaxed">선생님, 지금까지 체크하신 1학기 생기부 마감 프로세스 진행도가 전부 리셋됩니다. 정말 초기화할까요?</p>
+      <div class="flex justify-end space-x-2 text-xs font-bold pt-2">
+        <button onclick="closeResetModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 rounded-xl transition-all text-slate-600">취소</button>
+        <button onclick="confirmResetAll()" class="px-4 py-2 bg-red-500 hover:bg-red-600 rounded-xl text-white transition-all shadow-sm">진행 초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 스크립트 기능 처리 핵심 로직 -->
+  <script>
+    // 격려 메시지 풀 리스트
+    const CHEER_MESSAGES = [
+      "🎉 와우! 한 단계를 완벽히 클리어하셨습니다. 해솔초 3학년의 자랑이십니다! 👍",
+      "✨ 꼼꼼한 마감 체크 최고예요! 선생님 덕분에 우리 반 생기부가 빛이 납니다 💖",
+      "🌟 벌써 다음 단계라니 속도가 대단해요! 오늘 칼퇴근에 한 걸음 더 가까워졌어요 🚀",
+      "🐳 시원하게 한 단계 돌파! 여름방학의 파도가 저 멀리 보이기 시작합니다 힘내세요 🏖️",
+      "💯 흠잡을 데 없는 기재 검정 능력! 나이스 에러 제로에 수렴하고 있습니다 완벽해요 👏"
+    ];
+
+    let currentSelectedDate = null;
+    const totalCheckboxes = 11;
+
+    // 초기 구동 연동
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      loadSavedData();
+      calculateProgress();
+    });
+
+    // 1. 저장 데이터 복원
+    function loadSavedData() {
+      for(let i=1; i<=totalCheckboxes; i++) {
+        const isChecked = localStorage.getItem(`haesol_2026_chk_${i}`) === 'true';
+        document.getElementById(`chk-${i}`).checked = isChecked;
+      }
+    }
+
+    // 2. 체크박스 상태 변동 감지 및 폭죽 가동 트리거
+    function updateCheck(idNumStr) {
+      const chkBox = document.getElementById(idNumStr);
+      const indexNum = idNumStr.split('-')[1];
+      localStorage.setItem(`haesol_2026_chk_${indexNum}`, chkBox.checked);
+      
+      calculateProgress();
+
+      // 만약 체크 활성화 상태가 되었을 때 폭죽 이벤트 작동
+      if (chkBox.checked) {
+        triggerConfettiEffect();
+      }
+    }
+
+    // 3. 진척도 수치 계산 및 화면 동기화
+    function calculateProgress() {
+      let checkedCount = 0;
+      for(let i=1; i<=totalCheckboxes; i++) {
+        if(document.getElementById(`chk-${i}`).checked) checkedCount++;
+      }
+
+      const percent = Math.round((checkedCount / totalCheckboxes) * 100);
+      document.getElementById('progress-percent').innerText = `${percent}%`;
+      document.getElementById('progress-bar').style.width = `${percent}%`;
+      document.getElementById('progress-count').innerText = `완료 ${checkedCount}개 / 총 ${totalCheckboxes}개`;
+    }
+
+    // 4. 폭죽 애니메이션 발사 장치 (Canvas-Confetti 연계)
+    function triggerConfettiEffect() {
+      // 파티클 폭죽
+      confetti({
+        particleCount: 120,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#38bdf8', '#34d399', '#60a5fa', '#fbbf24', '#a78bfa']
+      });
+
+      // 맞춤 격려 팝업 알림 (네이티브창 완전 대체 브라우저 가이드 준수)
+      const randomMsg = CHEER_MESSAGES[Math.floor(Math.random() * CHEER_MESSAGES.length)];
+      
+      // 임시 부유형 토스트 메시지 생성
+      const toast = document.createElement('div');
+      toast.className = "fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-slate-900/90 text-white font-bold text-xs px-6 py-3.5 rounded-2xl shadow-xl border border-slate-700/50 tracking-wide transition-all animate-bounce flex items-center space-x-2";
+      toast.innerHTML = `<span>${randomMsg}</span>`;
+      document.body.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+
+    // 5. [1번 기능 연동] 날짜 필터 처리 기믹
+    function filterDate(dateStr) {
+      currentSelectedDate = dateStr;
+      
+      // 카드 디자인 상태 반전 활성화
+      document.querySelectorAll('.date-card').forEach(card => {
+        card.classList.remove('border-sky-400', 'bg-sky-50/40', 'ring-2', 'ring-sky-100');
+      });
+      
+      const targetCard = document.getElementById(`date-card-${dateStr.replace('.', '')}`);
+      if(targetCard) {
+        targetCard.classList.add('border-sky-400', 'bg-sky-50/40', 'ring-2', 'ring-sky-100');
+      }
+
+      // 8단계 노드 중 매칭되는 날짜 외 숨김 피드백
+      document.querySelectorAll('.step-node').forEach(node => {
+        if (node.getAttribute('data-date') === dateStr) {
+          node.style.display = 'block';
+        } else {
+          node.style.display = 'none';
+        }
+      });
+
+      document.getElementById('btn-all-view').classList.remove('hidden');
+      document.getElementById('filter-badge').classList.remove('hidden');
+    }
+
+    // 6. 날짜 필터 해제 (전체 보기)
+    function clearFilter() {
+      currentSelectedDate = null;
+      document.querySelectorAll('.date-card').forEach(card => {
+        card.classList.remove('border-sky-400', 'bg-sky-50/40', 'ring-2', 'ring-sky-100');
+      });
+
+      document.querySelectorAll('.step-node').forEach(node => {
+        node.style.display = 'block';
+      });
+
+      document.getElementById('btn-all-view').classList.add('hidden');
+      document.getElementById('filter-badge').classList.add('hidden');
+    }
+
+    // 7. 초기화 안심 팝업 제어
+    function openResetModal() {
+      document.getElementById('reset-modal').classList.remove('hidden');
+    }
+    function closeResetModal() {
+      document.getElementById('reset-modal').classList.add('hidden');
+    }
+    function confirmResetAll() {
+      for(let i=1; i<=totalCheckboxes; i++) {
+        document.getElementById(`chk-${i}`).checked = false;
+        localStorage.removeItem(`haesol_2026_chk_${i}`);
+      }
+      calculateProgress();
+      closeResetModal();
+    }
+  </script>
 </body>
 </html>
